@@ -51,7 +51,7 @@ public class Chassis extends Subsystem {
 			frontRight.set((-y - z - x) / 3);
 			rearRight.set((-y - z + x) / 3);
 		} else {
-			robotDrive.mecanumDrive_Cartesian(d, e, f, 0);
+			robotDrive.mecanumDrive_Cartesian(x, y, z, 0);
 		}
 	}
 
