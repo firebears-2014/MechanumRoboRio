@@ -34,8 +34,14 @@ public class  CmdDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	System.out.println("OH IT WORKS!!!  YES ... NO!!!");
+    	/* Jeron's code
+    	 * System.out.println("OH IT WORKS!!!  YES ... NO!!!");
+    	 *
 		Robot.chassis.mechanumDrive(Robot.oi.getJoystickZero().getX(),
+				-Robot.oi.getJoystickZero().getZ(),
+				-Robot.oi.getJoystickZero().getY());
+		*/
+    	Robot.chassis.mechanumDrive(Robot.oi.getJoystickZero().getX(),
 				-Robot.oi.getJoystickZero().getZ(),
 				-Robot.oi.getJoystickZero().getY());
     }
