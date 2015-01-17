@@ -48,8 +48,8 @@ public class Chassis extends Subsystem {
 			// start of kim's custom mechanum code
 			frontLeft.set((-y + z + x) / 3);
 			rearLeft.set((-y + z - x) / 3);
-			frontRight.set((-y - z - x) / 3);
-			rearRight.set((-y - z + x) / 3);
+			frontRight.set((-y - z + x) / 3);
+			rearRight.set((-y - z - x) / 3);
 		} else {
 			robotDrive.mecanumDrive_Cartesian(x, y, z, 0);
 		}
