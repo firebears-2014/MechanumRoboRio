@@ -10,14 +10,12 @@
 
 package org.FB2015.subsystems;
 
-import org.FB2015.Robot;
 import org.FB2015.RobotMap;
 import org.FB2015.commands.*;
 
 import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.can.*;
-import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -41,6 +39,8 @@ public class Chassis extends Subsystem {
 	// here. Call these from Commands.
 
 	public void initDefaultCommand() {
+		//Default Mecanum Style
+		SmartDashboard.putString(RobotMap.SMARTDASHBOARD_MECANUMSTYLE, "WPI");
 		setDefaultCommand(new CmdDrive());
 	}
 
@@ -59,9 +59,11 @@ public class Chassis extends Subsystem {
 		switch(mechanumStyle) {
 			case MS_NORMAL:
 				mechanumStyle = MS_KIM;
+				SmartDashboard.putString(RobotMap.SMARTDASHBOARD_MECANUMSTYLE, "Kim");
 				break;
 			case MS_KIM:
 				mechanumStyle = MS_NORMAL;
+				SmartDashboard.putString(RobotMap.SMARTDASHBOARD_MECANUMSTYLE, "WPI");
 				break;
 		}
 	}
