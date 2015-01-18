@@ -42,14 +42,9 @@ public class Chassis extends Subsystem {
 	}
 
 	public void mechanumDrive(double x, double y, double z) {
-		// robotDrive.mecanumDrive_Cartesian(d, e, f, 0);
 
 		if (kimCode) {
-			// start of kim's custom mechanum code
-			frontLeft.set((-y + z + x) / 3);
-			rearLeft.set((-y + z - x) / 3);
-			frontRight.set((-y - z + x) / 3);
-			rearRight.set((-y - z - x) / 3);
+			customMechanum(x, y, z);
 		} else {
 			robotDrive.mecanumDrive_Cartesian(x, y, z, 0);
 		}
@@ -57,5 +52,69 @@ public class Chassis extends Subsystem {
 
 	public void switchDrive() {
 		kimCode = !kimCode;
+	}
+
+	private void customMechanum(double x, double y, double z) {
+		y = -y;
+		// start of kim's custom mechanum code
+		/*
+		 * double total = Math.abs(y) + Math.abs(x) + Math.abs(z);
+		 * 
+		 * double perY = Math.abs(y) / total; double perX = Math.abs(x) / total;
+		 * double perZ = Math.abs(z) / total;
+		 * 
+		 * System.out.println("front left: y: " + Math.abs(y) + " x: " +
+		 * Math.abs(x) + " z: " + Math.abs(z));
+		 * 
+		 * frontLeft.set((perY * -y) + (perX * x) + (perZ * z));
+		 * 
+		 * rearLeft.set((perY * -y) + (perX * -x) + (perZ * z));
+		 * 
+		 * frontRight.set((perY * -y) + (perX * x) + (perZ * -z));
+		 * 
+		 * rearRight.set((perY * -y) + (perX * -x) + (perZ * -z));
+		 */
+
+		// System.out.println("X: " + x + " Y: " + y + " Z: " + z);
+
+		// double total = x - y + z;
+
+		/*
+		 * if (total > 1) { x = x / total; y = y / total; z = z / total; }
+		 */
+		// System.out.println(total);
+		// System.out.println("devide total = X: " + x + " Y: " + y + " Z: " +
+		// z);
+		double multiplier = Math.abs(x) + Math.abs(y) + Math.abs(z);
+		if (multiplier < 1) {
+			multiplier = 1;
+		}
+		double fl = (x + y + z) / multiplier;
+		double rl = (-x + y + z) / multiplier;
+		double fr = (x + y + -z) / multiplier;
+		double rr = (-x + y + -z) / multiplier;
+
+		// normalize
+		/*
+		 * double largest = 0; largest = larger(largest, fl); largest =
+		 * larger(largest, rl); largest = larger(largest, fr); largest =
+		 * larger(largest, rr); if (largest > 1) { fl = fl / largest; rl = rl /
+		 * largest; fr = fr / largest; rr = rr / largest; }
+		 * System.out.println("fl: " + fl + "rl: " + rl + "fr: " + fr + "rr: " +
+		 * rr);
+		 */
+
+		frontLeft.set(fl);
+		rearLeft.set(rl);
+		frontRight.set(fr);
+		rearRight.set(rr);
+
+	}
+
+	private double larger(double a, double b) {
+		if (Math.abs(a) > Math.abs(b)) {
+			return Math.abs(a);
+		} else
+			return Math.abs(b);
 	}
 }
