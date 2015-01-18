@@ -9,11 +9,11 @@
 // it from being updated in the future.
 
 
-package org.JeronRobot.commands;
+package org.FB2015.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-import org.JeronRobot.Robot;
+import org.FB2015.Robot;
 
 /**
  *

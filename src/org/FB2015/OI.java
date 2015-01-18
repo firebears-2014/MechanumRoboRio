@@ -9,9 +9,10 @@
 // it from being updated in the future.
 
 
-package org.JeronRobot;
+package org.FB2015;
 
-import org.JeronRobot.commands.*;
+import org.FB2015.commands.*;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.*;
 

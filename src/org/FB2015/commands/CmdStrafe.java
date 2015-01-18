@@ -9,12 +9,12 @@
 // it from being updated in the future.
 
 
-package org.JeronRobot.commands;
+package org.FB2015.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
-import org.JeronRobot.Robot;
+import org.FB2015.Robot;
 
 /**
  *
